@@ -15,11 +15,22 @@ namespace EFCore_WebAPI.Data
 
         public DbSet<Arma> Armas { get; set; }
 
+        public DbSet<HeroiBatalha> HeroisBatalhas { get; set; }
+
+        public DbSet<IdentidadeSecreta> IdentidadesSecretas { get; set; }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer(@"Data Source = (localdb)\MSSQLLocalDB; Initial Catalog = HeroApp; Integrated Security = True");
         }
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<HeroiBatalha>(entity => {
+                entity.HasKey(e => new { e.BatalhaId, e.HeroiId });
+            
+            });
+        }
 
     }
 }

@@ -4,14 +4,16 @@ using EFCore_WebAPI.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace EFCore_WebAPI.Migrations
 {
     [DbContext(typeof(HeroiContexto))]
-    partial class HeroiContextoModelSnapshot : ModelSnapshot
+    [Migration("20210517115952_HeroisBatalhas_Identidade")]
+    partial class HeroisBatalhas_Identidade
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
