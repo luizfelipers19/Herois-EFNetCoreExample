@@ -10,6 +10,9 @@ namespace EFCore.Repo
 {
     public class HeroiContexto : DbContext
     {
+
+
+
         public DbSet<Heroi> Herois { get; set; }
 
         public DbSet<Batalha> Batalhas { get; set;}
@@ -23,6 +26,7 @@ namespace EFCore.Repo
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer(@"Data Source = (localdb)\MSSQLLocalDB; Initial Catalog = HeroApp; Integrated Security = True");
+
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
