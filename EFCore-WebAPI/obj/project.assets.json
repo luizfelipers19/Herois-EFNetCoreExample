@@ -1593,6 +1593,30 @@
         "runtime": {
           "lib/netstandard1.3/System.Xml.XmlSerializer.dll": {}
         }
+      },
+      "EFCore.Domain/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "compile": {
+          "bin/placeholder/EFCore.Domain.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/EFCore.Domain.dll": {}
+        }
+      },
+      "EFCore.Repo/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "dependencies": {
+          "EFCore.Domain": "1.0.0",
+          "Microsoft.EntityFrameworkCore": "5.0.6"
+        },
+        "compile": {
+          "bin/placeholder/EFCore.Repo.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/EFCore.Repo.dll": {}
+        }
       }
     }
   },
@@ -5968,10 +5992,22 @@
         "system.xml.xmlserializer.4.3.0.nupkg.sha512",
         "system.xml.xmlserializer.nuspec"
       ]
+    },
+    "EFCore.Domain/1.0.0": {
+      "type": "project",
+      "path": "../EFCore.Domain/EFCore.Domain.csproj",
+      "msbuildProject": "../EFCore.Domain/EFCore.Domain.csproj"
+    },
+    "EFCore.Repo/1.0.0": {
+      "type": "project",
+      "path": "../EFCore.Repo/EFCore.Repo.csproj",
+      "msbuildProject": "../EFCore.Repo/EFCore.Repo.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net5.0": [
+      "EFCore.Domain >= 1.0.0",
+      "EFCore.Repo >= 1.0.0",
       "Microsoft.EntityFrameworkCore >= 5.0.6",
       "Microsoft.EntityFrameworkCore.SqlServer >= 5.0.6",
       "Microsoft.EntityFrameworkCore.Tools >= 5.0.6",
@@ -6009,7 +6045,14 @@
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\Windows\\Desktop\\Estudo\\EFCore.WebAPI\\EFCore-WebAPI\\EFCore.Domain\\EFCore.Domain.csproj": {
+              "projectPath": "C:\\Users\\Windows\\Desktop\\Estudo\\EFCore.WebAPI\\EFCore-WebAPI\\EFCore.Domain\\EFCore.Domain.csproj"
+            },
+            "C:\\Users\\Windows\\Desktop\\Estudo\\EFCore.WebAPI\\EFCore-WebAPI\\EFCore.Repo\\EFCore.Repo.csproj": {
+              "projectPath": "C:\\Users\\Windows\\Desktop\\Estudo\\EFCore.WebAPI\\EFCore-WebAPI\\EFCore.Repo\\EFCore.Repo.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
