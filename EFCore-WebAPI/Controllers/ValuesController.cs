@@ -13,7 +13,19 @@ namespace EFCore_WebAPI.Controllers
     [Route("api/[controller]")]
     [ApiController]
     public class ValuesController : ControllerBase
+
     {
+
+      //  public readonly HeroiContexto _context { get; set; }
+
+      //  public ValuesController(HeroiContexto contexto)
+        //{
+          //  _context = contexto;
+        //}
+
+
+
+
         // GET: api/<ValuesController>
         [HttpGet]
         public ActionResult<IEnumerable<string>> Get()
@@ -22,16 +34,18 @@ namespace EFCore_WebAPI.Controllers
         }
 
         // GET api/<ValuesController>/5
-        [HttpGet("{id}")]
-        public ActionResult Get(int id)
+        [HttpGet("{nameHero}")]
+        public ActionResult Get(string nameHero)
         {
-            var heroi = new Heroi { Nome = "Homem de Ferro"};
-            using (var contexto = new HeroiContexto())
+            var heroi = new Heroi { Nome = nameHero};
+           using(var contexto = new HeroiContexto())
             {
-                contexto.Herois.Add(heroi);
-                //contexto.Add(heroi);
-                contexto.SaveChanges();
+             contexto.Herois.Add(heroi);
+             //contexto.Add(heroi);
+             contexto.SaveChanges();
             }
+               
+           
             return Ok();
         }
 
