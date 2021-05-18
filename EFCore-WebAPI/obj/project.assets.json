@@ -1609,7 +1609,8 @@
         "framework": ".NETCoreApp,Version=v5.0",
         "dependencies": {
           "EFCore.Domain": "1.0.0",
-          "Microsoft.EntityFrameworkCore": "5.0.6"
+          "Microsoft.EntityFrameworkCore": "5.0.6",
+          "Microsoft.EntityFrameworkCore.SqlServer": "5.0.6"
         },
         "compile": {
           "bin/placeholder/EFCore.Repo.dll": {}
@@ -6009,6 +6010,7 @@
       "EFCore.Domain >= 1.0.0",
       "EFCore.Repo >= 1.0.0",
       "Microsoft.EntityFrameworkCore >= 5.0.6",
+      "Microsoft.EntityFrameworkCore.Design >= 5.0.6",
       "Microsoft.EntityFrameworkCore.SqlServer >= 5.0.6",
       "Microsoft.EntityFrameworkCore.Tools >= 5.0.6",
       "Swashbuckle.AspNetCore >= 5.6.3"
@@ -6066,6 +6068,12 @@
         "targetAlias": "net5.0",
         "dependencies": {
           "Microsoft.EntityFrameworkCore": {
+            "target": "Package",
+            "version": "[5.0.6, )"
+          },
+          "Microsoft.EntityFrameworkCore.Design": {
+            "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+            "suppressParent": "All",
             "target": "Package",
             "version": "[5.0.6, )"
           },

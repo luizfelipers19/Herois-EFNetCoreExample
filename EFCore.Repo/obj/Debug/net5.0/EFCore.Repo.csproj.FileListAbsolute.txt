@@ -13,3 +13,6 @@ C:\Users\Windows\Desktop\Estudo\EFCore.WebAPI\EFCore-WebAPI\EFCore.Repo\obj\Debu
 C:\Users\Windows\Desktop\Estudo\EFCore.WebAPI\EFCore-WebAPI\EFCore.Repo\obj\Debug\net5.0\EFCore.Repo.dll
 C:\Users\Windows\Desktop\Estudo\EFCore.WebAPI\EFCore-WebAPI\EFCore.Repo\obj\Debug\net5.0\ref\EFCore.Repo.dll
 C:\Users\Windows\Desktop\Estudo\EFCore.WebAPI\EFCore-WebAPI\EFCore.Repo\obj\Debug\net5.0\EFCore.Repo.pdb
+C:\Users\Windows\Desktop\Estudo\EFCore.WebAPI\EFCore-WebAPI\EFCore.Repo\bin\Debug\net5.0\EFCore.Repo.runtimeconfig.json
+C:\Users\Windows\Desktop\Estudo\EFCore.WebAPI\EFCore-WebAPI\EFCore.Repo\bin\Debug\net5.0\EFCore.Repo.runtimeconfig.dev.json
+C:\Users\Windows\Desktop\Estudo\EFCore.WebAPI\EFCore-WebAPI\EFCore.Repo\obj\Debug\net5.0\EFCore.Repo.genruntimeconfig.cache

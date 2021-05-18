@@ -9,14 +9,7 @@ using System.Threading.Tasks;
 namespace EFCore.Repo
 {
     public class HeroiContexto : DbContext
-
     {
-
-        public HeroiContexto(DbContextOptions<HeroiContexto> options) : base(options)
-        {
-
-        }
-
         public DbSet<Heroi> Herois { get; set; }
 
         public DbSet<Batalha> Batalhas { get; set;}
@@ -27,7 +20,10 @@ namespace EFCore.Repo
 
         public DbSet<IdentidadeSecreta> IdentidadesSecretas { get; set; }
 
-       
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseSqlServer(@"Data Source = (localdb)\MSSQLLocalDB; Initial Catalog = HeroApp; Integrated Security = True");
+        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

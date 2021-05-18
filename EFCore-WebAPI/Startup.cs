@@ -29,10 +29,10 @@ namespace EFCore_WebAPI
         {
 
 
-            services.AddDbContext<HeroiContexto>( options =>
-            {
-                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
-            });
+           // services.AddDbContext<HeroiContexto>( options =>
+            //{
+              //  options.UseSqlServer(@"Data Source = (localdb)\MSSQLLocalDB; Initial Catalog = HeroApp; Integrated Security = True");
+           // });
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
