@@ -58,6 +58,24 @@ namespace EFCore_WebAPI.Controllers
             return Ok();
         }
 
+        // GET api/values/5
+        [HttpGet("AddRange")]
+        public ActionResult GetAddRange()
+        {
+            _context.AddRange(
+                new Heroi { Nome = "Capitão América" },
+                new Heroi { Nome = "Doutor Estranho" },
+                new Heroi { Nome = "Pantera Negra" },
+                new Heroi { Nome = "Viúva Negra" },
+                new Heroi { Nome = "Hulk" },
+                new Heroi { Nome = "Gavião Arqueiro" },
+                new Heroi { Nome = "Capitã Marvel" }
+            );
+            _context.SaveChanges();
+
+            return Ok();
+        }
+
         // POST api/<ValuesController>
         [HttpPost]
         public void Post([FromBody] string value)
@@ -71,9 +89,17 @@ namespace EFCore_WebAPI.Controllers
         }
 
         // DELETE api/<ValuesController>/5
-        [HttpDelete("{id}")]
+        // DELETE api/values/5
+        [HttpGet("Delete/{id}")]
         public void Delete(int id)
         {
+
+            var heroi = _context.Herois
+                                .Where(x => x.Id == id)
+                                .Single();
+            _context.Herois.Remove(heroi);
+            _context.SaveChanges();
+
         }
     }
 }
