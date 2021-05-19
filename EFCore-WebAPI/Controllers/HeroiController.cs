@@ -1,4 +1,5 @@
-﻿using EFCore.Repo;
+﻿using EFCore.Domain;
+using EFCore.Repo;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -47,8 +48,34 @@ namespace EFCore_WebAPI.Controllers
 
         // POST api/<HeroiController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public ActionResult Post()
+            //[FromBody] string value
         {
+
+            try
+            {
+                var heroi = new Heroi
+                {
+                    Nome = "Homem de Ferro",
+                    Armas = new List<Arma>
+                    {
+                        new Arma {Nome = "Mac 3"},
+                        new Arma {Nome = "Mac 5"}
+                    }
+
+                };
+                _context.Herois.Add(heroi);
+                _context.SaveChanges();
+
+
+                return Ok("Bazinga");
+            }
+            catch (Exception ex)
+            {
+
+                return BadRequest($"Erro: {ex}");
+            }
+
         }
 
         // PUT api/<HeroiController>/5
