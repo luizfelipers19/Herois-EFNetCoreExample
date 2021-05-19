@@ -29,16 +29,20 @@ namespace EFCore_WebAPI
         {
 
 
-           // services.AddDbContext<HeroiContexto>( options =>
+            // services.AddDbContext<HeroiContexto>( options =>
             //{
-              //  options.UseSqlServer(@"Data Source = (localdb)\MSSQLLocalDB; Initial Catalog = HeroApp; Integrated Security = True");
-           // });
+            //  options.UseSqlServer(@"Data Source = (localdb)\MSSQLLocalDB; Initial Catalog = HeroApp; Integrated Security = True");
+            // });
+
+            
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "EFCore_WebAPI", Version = "v1" });
             });
+
+            services.AddDbContext<HeroiContexto>(option => option.UseSqlServer(@"Data Source =(localdb)\MSSQLLocalDB;Initial Catalog=HeroApp;"));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

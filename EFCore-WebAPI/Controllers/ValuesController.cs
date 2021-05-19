@@ -16,12 +16,12 @@ namespace EFCore_WebAPI.Controllers
 
     {
 
-      //  public readonly HeroiContexto _context { get; set; }
+        public readonly HeroiContexto _context ;
 
-      //  public ValuesController(HeroiContexto contexto)
-        //{
-          //  _context = contexto;
-        //}
+       public ValuesController(HeroiContexto contexto)
+       {
+        _context = contexto;
+       }
 
 
 
@@ -38,12 +38,13 @@ namespace EFCore_WebAPI.Controllers
         public ActionResult Get(string nameHero)
         {
             var heroi = new Heroi { Nome = nameHero};
-           using(var contexto = new HeroiContexto())
-            {
-             contexto.Herois.Add(heroi);
+            //using(var contexto = new HeroiContexto())
+            //
+            //{
+             _context.Herois.Add(heroi);
              //contexto.Add(heroi);
-             contexto.SaveChanges();
-            }
+             _context.SaveChanges();
+            //}
                
            
             return Ok();
