@@ -27,10 +27,18 @@ namespace EFCore_WebAPI.Controllers
 
 
         // GET: api/<ValuesController>
-        [HttpGet]
-        public ActionResult<IEnumerable<string>> Get()
+        [HttpGet("filtro/{nome}")]
+        public ActionResult GetFiltro(string nome)
         {
-            return new string[] { "value1", "value2" };
+            //linq method
+            //a listagem abaixo também funciona
+           //  var listHeroi =  _context.Herois.Where(h => h.Nome.Contains(nome)).ToList();
+
+
+            //deixando essa listagem ativa, pois se assemelha mais a sintaxe do SQL
+            //linq query sintax
+            var listHeroi = (from heroi in _context.Herois where heroi.Nome.Contains(nome) select heroi).ToList();
+            return Ok(listHeroi);
         }
 
         // GET api/<ValuesController>/5
