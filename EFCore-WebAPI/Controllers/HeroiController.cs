@@ -27,7 +27,7 @@ namespace EFCore_WebAPI.Controllers
         {
             try
             {
-                return Ok();
+                return Ok(new Heroi());
             }
             catch (Exception ex)
             {
@@ -48,23 +48,14 @@ namespace EFCore_WebAPI.Controllers
 
         // POST api/<HeroiController>
         [HttpPost]
-        public ActionResult Post()
+        public ActionResult Post(Heroi model)
             //[FromBody] string value
         {
 
             try
             {
-                var heroi = new Heroi
-                {
-                    Nome = "Homem de Ferro",
-                    Armas = new List<Arma>
-                    {
-                        new Arma {Nome = "Mac 3"},
-                        new Arma {Nome = "Mac 5"}
-                    }
-
-                };
-                _context.Herois.Add(heroi);
+               
+                _context.Herois.Add(model);
                 _context.SaveChanges();
 
 
@@ -80,8 +71,27 @@ namespace EFCore_WebAPI.Controllers
 
         // PUT api/<HeroiController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public ActionResult Put(int id, Heroi model)
         {
+
+            try
+            {
+                if(_context.Herois.Find(id) != null)
+                {
+                    _context.Herois.Update(model);
+                    _context.SaveChanges();
+                    return Ok("Bazinga");
+                }
+
+                return Ok("Não encontrado!");
+            }
+            catch (Exception ex)
+            {
+
+                return BadRequest($"Erro: {ex}");
+            }
+
+
         }
 
         // DELETE api/<HeroiController>/5
