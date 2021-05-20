@@ -43,6 +43,10 @@ namespace EFCore_WebAPI
             });
 
             services.AddDbContext<HeroiContexto>(option => option.UseSqlServer(@"Data Source =(localdb)\MSSQLLocalDB;Initial Catalog=HeroApp;"));
+
+            //quando houver a necessidade por parte dos meus controllers de um repositório,
+            //ou seja, daonde foi implementado o IEFCoreRepository, implemente os métodos construídos no EFCoreRepository
+            services.AddScoped<IEFCoreRepository, EFCoreRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

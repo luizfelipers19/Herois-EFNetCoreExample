@@ -15,12 +15,14 @@ namespace EFCore_WebAPI.Controllers
     [ApiController]
     public class BatalhaController : ControllerBase
     {
+        private readonly IEFCoreRepository _repo;
 
-        private readonly HeroiContexto _context;
+        // private readonly HeroiContexto _context;
 
-        public BatalhaController(HeroiContexto contexto)
+        public BatalhaController(IEFCoreRepository repo)
         {
-            _context = contexto;
+            _repo = repo;
+            // _context = contexto;
         }
 
         // GET: api/<BatalhaController>
@@ -50,14 +52,19 @@ namespace EFCore_WebAPI.Controllers
 
         // POST api/<BatalhaController>
         [HttpPost]
-        public ActionResult Post(Batalha model)
+        public async Task<IActionResult> Post(Batalha model)
         {
             try
             {
-                _context.Batalhas.Add(model);
-                _context.SaveChanges();
+                _repo.Add(model);
+                //_context.SaveChanges();
 
-                return Ok();
+                if (await _repo.SaveChangeAsync())
+                {
+                    return Ok("Add");
+                }
+                
+               // return Ok();
             }
             catch (Exception ex)
             {
@@ -65,7 +72,7 @@ namespace EFCore_WebAPI.Controllers
                 return BadRequest($"Erro: {ex}");
             }
 
-
+            return BadRequest("Não salvou");
         }
 
         // PUT api/<BatalhaController>/5
@@ -73,22 +80,22 @@ namespace EFCore_WebAPI.Controllers
         public ActionResult Put(int id, Batalha model)
         {
 
-            try
-            {
-                if (_context.Batalhas.AsNoTracking().FirstOrDefault(b => b.Id == id) != null)
-                {
-                    _context.Batalhas.Update(model);
-                    _context.SaveChanges();
-                    return Ok("Bazinga");
-                }
+            //try
+            //{
+            //    if (_context.Batalhas.AsNoTracking().FirstOrDefault(b => b.Id == id) != null)
+            //    {
+            //        _context.Batalhas.Update(model);
+            //        _context.SaveChanges();
+                 return Ok("Bazinga");
+            //    }
 
-                return Ok("Não encontrado!");
-            }
-            catch (Exception ex)
-            {
+            //    return Ok("Não encontrado!");
+            //}
+            //catch (Exception ex)
+            //{
 
-                return BadRequest($"Erro: {ex}");
-            }
+            //    return BadRequest($"Erro: {ex}");
+            //}
 
         }
 
