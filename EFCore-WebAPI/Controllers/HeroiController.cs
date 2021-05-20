@@ -1,6 +1,7 @@
 ﻿using EFCore.Domain;
 using EFCore.Repo;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -76,7 +77,7 @@ namespace EFCore_WebAPI.Controllers
 
             try
             {
-                if(_context.Herois.Find(id) != null)
+                if(_context.Herois.AsNoTracking().FirstOrDefault(h => h.Id == id) != null)
                 {
                     _context.Herois.Update(model);
                     _context.SaveChanges();
