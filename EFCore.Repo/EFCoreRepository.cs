@@ -39,28 +39,68 @@ namespace EFCore.Repo
 
         }
 
-        public async Task<Heroi[]> GetAllHerois()
+        public async Task<Heroi[]> GetAllHerois(bool incluirBatalha =  false)
         {
             IQueryable<Heroi> query = _contexto.Herois
                 .Include(h => h.Identidade)
                 .Include(h => h.Armas);
 
+            
+
+            if (incluirBatalha)
+            {
             query = query.Include(h => h.HeroisBatalhas)
                  .ThenInclude(hb => hb.Batalha);
+
+            }
 
             query = query.AsNoTracking().OrderBy(h => h.Id);
 
             return await query.ToArrayAsync();
         }
 
-        public Task<Heroi[]> GetHeroiById()
+
+        
+        public async Task<Heroi> GetHeroiById(int id, bool incluirBatalha = false)
         {
-            throw new NotImplementedException();
+            IQueryable<Heroi> query = _contexto.Herois
+                .Include(h => h.Identidade)
+                .Include(h => h.Armas);
+
+
+
+            if (incluirBatalha)
+            {
+                query = query.Include(h => h.HeroisBatalhas)
+                     .ThenInclude(hb => hb.Batalha);
+
+            }
+
+            query = query.AsNoTracking().OrderBy(h => h.Id);
+
+            return await query.FirstOrDefaultAsync(h => h.Id == id);
         }
 
-        public Task<Heroi> GetHeroiByNome()
+        public async Task<Heroi[]> GetHeroiByNome(string nome, bool incluirBatalha = false)
         {
-            throw new NotImplementedException();
+            IQueryable<Heroi> query = _contexto.Herois
+                .Include(h => h.Identidade)
+                .Include(h => h.Armas);
+
+            
+
+            if (incluirBatalha)
+            {
+            query = query.Include(h => h.HeroisBatalhas)
+                 .ThenInclude(hb => hb.Batalha);
+
+            }
+
+            query = query.AsNoTracking()
+                .Where(h => h.Nome.Contains(nome))                
+                .OrderBy(h => h.Id);
+
+            return await query.ToArrayAsync();
         }
     }
 }

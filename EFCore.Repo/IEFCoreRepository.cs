@@ -15,11 +15,11 @@ namespace EFCore.Repo
 
         Task<bool> SaveChangeAsync();
 
-        Task<Heroi[]> GetAllHerois();
+        Task<Heroi[]> GetAllHerois(bool incluirBatalha);
 
-        Task<Heroi[]> GetHeroiById();
+        Task<Heroi> GetHeroiById(int id, bool incluirBatalha = false);
 
-        Task<Heroi> GetHeroiByNome();
+        Task<Heroi[]> GetHeroiByNome(string nome, bool incluirBatalha = false);
 
     }
 }
