@@ -31,8 +31,8 @@ namespace EFCore_WebAPI.Controllers
         {
             try
             {
-                var herois = await _repo.GetAllBatalhas(false);
-                return Ok(herois);
+                var batalhas = await _repo.GetAllBatalhas(false);
+                return Ok(batalhas);
             }
             catch (Exception ex)
             {
@@ -102,16 +102,16 @@ namespace EFCore_WebAPI.Controllers
         {
             try
             {
-                var heroi = await _repo.GetBatalhaById(id);
+                var batalha = await _repo.GetBatalhaById(id);
 
-                if (heroi != null)
+                if (batalha != null)
                 {
-                    _repo.Delete(heroi);
+                    _repo.Delete(batalha);
 
 
                     if (await _repo.SaveChangeAsync())
                     {
-                        return Ok("Bazinga");
+                        return Ok("Batalha Deletada");
                     }
 
                     
@@ -125,7 +125,7 @@ namespace EFCore_WebAPI.Controllers
 
                 return BadRequest($"Erro: {ex}");
             }
-            return BadRequest("Não encontrado");
+            return BadRequest("Batalha Não encontrada");
 
         }
     }

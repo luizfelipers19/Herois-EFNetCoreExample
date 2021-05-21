@@ -76,9 +76,9 @@ namespace EFCore.Repo
 
             }
 
-            query = query.AsNoTracking().OrderBy(h => h.Id);
+           // query = query.AsNoTracking().OrderBy(h => h.Id);
 
-            return await query.FirstOrDefaultAsync(h => h.Id == id);
+            return await query.SingleOrDefaultAsync(h => h.Id.Equals(id));
         }
 
         public async Task<Heroi[]> GetHeroiByNome(string nome, bool incluirBatalha = false)
