@@ -63,3 +63,6 @@ C:\Users\Windows\Desktop\Estudo\EFCore.WebAPI\EFCore-WebAPI\EFCore-WebAPI\bin\De
 C:\Users\Windows\Desktop\Estudo\EFCore.WebAPI\EFCore-WebAPI\EFCore-WebAPI\bin\Debug\net5.0\EFCore.Repo.dll
 C:\Users\Windows\Desktop\Estudo\EFCore.WebAPI\EFCore-WebAPI\EFCore-WebAPI\bin\Debug\net5.0\EFCore.Domain.pdb
 C:\Users\Windows\Desktop\Estudo\EFCore.WebAPI\EFCore-WebAPI\EFCore-WebAPI\bin\Debug\net5.0\EFCore.Repo.pdb
+C:\Users\Windows\Desktop\Estudo\EFCore.WebAPI\EFCore-WebAPI\EFCore-WebAPI\bin\Debug\net5.0\Microsoft.AspNetCore.JsonPatch.dll
+C:\Users\Windows\Desktop\Estudo\EFCore.WebAPI\EFCore-WebAPI\EFCore-WebAPI\bin\Debug\net5.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+C:\Users\Windows\Desktop\Estudo\EFCore.WebAPI\EFCore-WebAPI\EFCore-WebAPI\bin\Debug\net5.0\Newtonsoft.Json.Bson.dll

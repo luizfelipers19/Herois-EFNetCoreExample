@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EFCore.Domain;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,6 +14,12 @@ namespace EFCore.Repo
         void Delete<T>(T entity) where T : class;
 
         Task<bool> SaveChangeAsync();
+
+        Task<Heroi[]> GetAllHerois();
+
+        Task<Heroi[]> GetHeroiById();
+
+        Task<Heroi> GetHeroiByNome();
 
     }
 }

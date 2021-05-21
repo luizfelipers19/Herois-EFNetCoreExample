@@ -1,4 +1,6 @@
-﻿using System;
+﻿using EFCore.Domain;
+using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -37,6 +39,28 @@ namespace EFCore.Repo
 
         }
 
-       
+        public async Task<Heroi[]> GetAllHerois()
+        {
+            IQueryable<Heroi> query = _contexto.Herois
+                .Include(h => h.Identidade)
+                .Include(h => h.Armas);
+
+            query = query.Include(h => h.HeroisBatalhas)
+                 .ThenInclude(hb => hb.Batalha);
+
+            query = query.AsNoTracking().OrderBy(h => h.Id);
+
+            return await query.ToArrayAsync();
+        }
+
+        public Task<Heroi[]> GetHeroiById()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<Heroi> GetHeroiByNome()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

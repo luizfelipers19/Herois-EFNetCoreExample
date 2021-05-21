@@ -27,11 +27,12 @@ namespace EFCore_WebAPI.Controllers
 
         // GET: api/<BatalhaController>
         [HttpGet]
-        public ActionResult Get()
+        public async Task<IActionResult> Get()
         {
             try
             {
-                return Ok(new Batalha());
+                var herois = await _repo.GetAllHerois();
+                return Ok(herois);
             }
             catch (Exception ex)
             {
@@ -103,6 +104,8 @@ namespace EFCore_WebAPI.Controllers
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
+
+
         }
     }
 }
