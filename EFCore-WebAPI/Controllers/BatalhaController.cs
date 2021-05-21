@@ -31,7 +31,7 @@ namespace EFCore_WebAPI.Controllers
         {
             try
             {
-                var herois = await _repo.GetAllHerois(true);
+                var herois = await _repo.GetAllBatalhas(false);
                 return Ok(herois);
             }
             catch (Exception ex)
@@ -50,9 +50,9 @@ namespace EFCore_WebAPI.Controllers
         {
             try
             {
-                var herois = await _repo.GetHeroiById(id, true);
+                var batalha = await _repo.GetBatalhaById(id, false);
 
-                return Ok(herois);
+                return Ok(batalha);
             }
             catch(Exception ex)
             {
@@ -92,24 +92,8 @@ namespace EFCore_WebAPI.Controllers
         [HttpPut("{id}")]
         public ActionResult Put(int id, Batalha model)
         {
-
-            //try
-            //{
-            //    if (_context.Batalhas.AsNoTracking().FirstOrDefault(b => b.Id == id) != null)
-            //    {
-            //        _context.Batalhas.Update(model);
-            //        _context.SaveChanges();
-                 return Ok("Bazinga");
-            //    }
-
-            //    return Ok("Não encontrado!");
-            //}
-            //catch (Exception ex)
-            //{
-
-            //    return BadRequest($"Erro: {ex}");
-            //}
-
+            return Ok();
+           
         }
 
         // DELETE api/<BatalhaController>/5
@@ -118,7 +102,7 @@ namespace EFCore_WebAPI.Controllers
         {
             try
             {
-                var heroi = await _repo.GetHeroiById(id);
+                var heroi = await _repo.GetBatalhaById(id);
 
                 if (heroi != null)
                 {
